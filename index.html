@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&family=Poppins:wght@400;700&family=Work+Sans:ital,wght@0,100;0,200;1,100&family=Zen+Dots&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      .container {
+        text-align: center;
+        margin: 0 400px;
+      }
+      .text-center {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .button {
+        border: 2px solid black;
+        padding: 20px;
+        margin: 0 4px;
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        font-size: x-large;
+        cursor: pointer;
+      }
+      .row {
+        margin: 17px 0;
+      }
+      .row input {
+        padding: 8px 0;
+        font-size: x-large;
+        border: 2px solid black;
+        width: 270px;
+        height: 33px;
+        border-radius: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center">Calculator</h1>
+    <div class="container">
+      <div class="row">
+        <input class="input" type="text" />
+      </div>
+      <div class="row">
+        <button class="button">C</button>
+        <button class="button">%</button>
+        <button class="button">X</button>
+        <button class="button">/</button>
+      </div>
+      <div class="row">
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="button">*</button>
+      </div>
+      <div class="row">
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="button">-</button>
+      </div>
+      <div class="row">
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <button class="button">+</button>
+      </div>
+      <div class="row">
+        <button class="button">00</button>
+        <button class="button">0</button>
+        <button class="button">.</button>
+        <button class="button">=</button>
+      </div>
+    </div>
+    <script>
+      let string = "";
+      let buttons = document.querySelectorAll(".button");
+      Array.from(buttons).forEach((button) => {
+        button.addEventListener("click", (e) => {
+          if (e.target.innerHTML == "=") {
+            string = eval(string);
+            document.querySelector("input").value = string;
+          } else if (e.target.innerHTML == "C") {
+            string = "";
+            document.querySelector("input").value = string;
+          } else if (e.target.innerHTML == "X") {
+            string=string.substr(0,string.length-1);
+            document.querySelector("input").value = string;
+          } else {
+            console.log(e.target);
+            string = string + e.target.innerHTML;
+            document.querySelector("input").value = string;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
